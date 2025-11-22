@@ -1,0 +1,50 @@
+
+:root {
+    --sci-fi-light: #e0e7ff;
+    --sci-fi-cyan: #00ffff;
+    --sci-fi-dark: #0a0a0f;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto Condensed';
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--sci-fi-light);
+  text-align: left;
+  background: linear-gradient(180deg, #1a1a2e 0%, var(--sci-fi-dark) 100%);
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Navigation bar */
+
+.nav-menu{
+   display: flex;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   gap: 1.5rem;
+   flex-wrap: wrap;
+}
+
+
+.nav-menu a{
+    color: var(--sci-fi-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    position: relative;
+    font-family: "Roboto Condensed";
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(0,0,0,0.3);
+    text-shadow: 0 0 5px var(--sci-fi-cyan);
+}
+
+.nav-menu a:hover{
+    color: var(--sci-fi-cyan);
+    text-shadow: 0 0 10px var(--sci-fi-cyan);
+}
+
+
