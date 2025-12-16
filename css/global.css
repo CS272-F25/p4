@@ -31,6 +31,7 @@ p{
 }
 
 
+
 a{
     color: #12bbad;
     text-decoration: none;
@@ -259,7 +260,7 @@ button:focus{
     display: inline-block;
     padding: 0.85rem 2.5rem;
     background: rgba(0, 255, 255, 0.2);
-    color: var(--retro-cyan);
+    color: var(--retro-light);
     text-decoration: none;
     border-radius: 0;
     font-weight: bold;
@@ -283,3 +284,100 @@ button:focus{
 }
 
 
+/* ===============================
+   Additional Section Styles
+   =============================== */
+
+/* =====WELCOME SECTION===== */
+
+.hero{
+    text-align: center;
+}
+
+.hero .retro-title{
+    font-size: 2.35rem;
+}
+
+.hero-subtitle{
+    font-family: 'Roboto Condensed', 'Orbitron', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+}
+
+.hero-description {
+    font-size: 1.125rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+/* =========GRID SECTIONS======== */
+.info-grid, 
+.genre-grid{
+    display: grid;
+    gap: 1.5rem;
+}
+
+/*=====CARD SECTIONS=====*/
+
+.info-card,
+.genre-card{
+    background: var(--retro-gray);
+    border: 2px solid var(--retro-cyan);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.info-card:hover,
+.genre-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.8);
+    border-color: var(--retro-light-blue);
+    background: hwb(198 1% 70% / 0.98);
+}
+
+.genre-chip{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    background: var(--retro-dark);
+    color: var(--retro-light);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    margin: 0.2rem;
+    border: 1.5px solid var(--retro-cyan);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.genre-copy{
+    font-size: 0.95rem;
+    line-height: normal;
+    margin-bottom: 0.5rem;
+    color: var(--retro-light);
+}
+
+/* .genre-chip:hover{
+    background: var(--retro-cyan);
+    border-color: var(--retro-light-blue);
+    color: var(--retro-dark);
+} */
+
+/* ======Info section spacing===== */
+.info-section .info-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+/* ===Button style === */
+.hero .btn-primary, 
+.featured-section .btn-primary {
+    margin-top: 0.5rem;
+}
+
+.hero .btn-primary {
+    margin-bottom: 3rem;
+}
