@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta description="CINE-REWIND Movie Rental Website" />
+    <title>CINEREWIND</title>
+
+    <!--Boostrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="css/global.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <script src="app.js" defer></script>
+  </head>
+
+  <body>
+    <!--Navigation bar-->
+    <nav class="main-nav" role="navigation">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <h1>◀ Cine-Rewind ▶</h1>
+        </a>
+
+        <!--Menu content-->
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalog.html">Catalog</a></li>
+          <li><a href="classics.html">Classics</a></li>
+          <li><a href="rent.html">Rent</a></li>
+          <li><a href="review.html">Reviews</a></li>
+          <li><a href="aboutUs.html">About Us</a></li>
+          <li>
+            <button id="signin-btn" class="nav-btn">Sign In</button>
+            <span id="user-greeting" class="nav-greeting"></span>
+            <button id="signout-btn" class="nav-btn">Sign Out</button>
+          </li>
+        </ul>
+
+        <div class="nav-header-actions">
+          <a href="cart.html" class="cart-icon-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-cart"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
+              />
+            </svg>
+            <span class="cart-badge" id="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!--Main content-->
+    <main>
+      <section class="tv-showcase">
+        <h2 id="tv-heading">Featured Movie on Retro TV</h2>
+
+        <div class="retro-tv-container">
+          <div class="retro-tv">
+            <div class="tv-frame">
+              <div class="tv-screen" id="tv-screen">
+                <div class="tv-static" id="tv-static"></div>
+
+                <div class="tv-video-container" id="tv-video-container">
+                  <div id="youtube-iframe-placeholder"></div>
+
+                  <div class="tv-poster-display" id="tv-poster-display">
+                    <img id="tv-poster-img" src="" alt="Movie Poster" />
+                    <div class="tv-poster-overlay">
+                      <span class="tv-label">NOW PLAYING</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tv-scanlines"></div>
+                <div class="tv-reflection"></div>
+              </div>
+
+              <div class="tv-controls">
+                <div class="tv-control-group">
+                  <label class="tv-control-label">CHANNEL</label>
+                  <div class="tv-dial channel-dial">
+                    <div class="dial-knob"></div>
+                    <span class="dial-indicator">3</span>
+                  </div>
+                </div>
+
+                <div class="tv-control-group">
+                  <label class="tv-control-label">VOLUME</label>
+                  <div class="tv-dial volume-dial">
+                    <div class="dial-knob"></div>
+                    <span class="dial-indicator">7</span>
+                  </div>
+                </div>
+
+                <div class="tv-control-group">
+                  <label class="tv-control-label">POWER</label>
+                  <button class="tv-power-btn" type="button" id="tv-power-btn">
+                    <span class="power-indicator"></span>
+                    OFF
+                  </button>
+                </div>
+              </div>
+
+              <div class="tv-brand">CINEREWIND TV</div>
+            </div>
+
+            <div class="tv-movie-info" id="tv-movie-info">
+              <h3 class="tv-movie-title" id="tv-movie-title">Loading...</h3>
+              <p class="tv-movie-description" id="tv-movie-description"></p>
+
+              <div class="tv-movie-controls">
+                <button class="tv-btn" id="prev-movie-btn">◀◀ PREV</button>
+                <button class="tv-btn" id="rent-movie-btn">NEXT ▶▶</button>
+                <a href="catalog.html" class="tv-btn btn-primary">BROWSE ALL</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Movie Section-->
+      <section class="hero">
+        <h2 id="hero-heading" class="retro-title">WELCOME TO CINE-REWIND</h2>
+        <p class="hero subtitle">YOUR RETRO MOVIE EXPERIENCE AWAITS</p>
+        <p class="hero-description">
+          Step back in time with Cine-Rewind, your ultimate destination for
+          classic movie rentals. Whether you're a fan of timeless
+          black-and-white films or vibrant 80s blockbusters, we've got something
+          for every retro movie lover. Explore our extensive catalog, read
+          reviews from fellow cinephiles, and rent your favorite films to enjoy
+          at home. Dive into the nostalgia and relive the magic of cinema's
+          golden eras with Cine-Rewind!
+        </p>
+        <a href="catalog.html" class="btn-primary"
+          >▶▶ BROWSE OUR ENTIRE CATALOG ◀◀</a
+        >
+      </section>
+
+      <!-- <section class="highlights">
+            <h2 class="retro-title">FEATURED CLASSICS</h2>
+            <div class="highlights-container" id="highlights-container"> -->
+      <!-- Highlighted movies will be dynamically inserted here -->
+
+      <!-- </div>
+            <a href="classics.html" class="btn-primary">▶▶ EXPLORE CLASSICS ◀◀</a>
+        </section> -->
+
+      <section class="featured-section">
+        <h2 class="home-genres-heading" class="section-title">
+          BROWSE BY GENRE
+        </h2>
+        <div class="section-intro">
+          <p>Select a shelf that fits your mood and start exploring.</p>
+        </div>
+
+        <div id="genre-grid" class="info-grid genre-grid">
+          <!-- Genre cards will be dynamically inserted here -->
+          <article class="genre-card" data-genre="action">
+            <header class="genre-header">
+              <span class="genre-chip">01</span>
+              <h3>Action &amp; Adventure</h3>
+            </header>
+            <p class="genre-copy">
+              Heists, car chases, and tight pacing. Good when you want the plot
+              moving from scene one.
+            </p>
+            <div class="genre-meta">
+              <span class="pill-tag">High Energy</span>
+              <span class="pill-tag">Night Viewing</span>
+            </div>
+          </article>
+
+          <article class="genre-card" data-genre="scifi">
+            <header class="genre-header">
+              <span class="genre-chip">02</span>
+              <h3>Sci-Fi &amp; Fantasy</h3>
+            </header>
+            <p class="genre-copy">
+              Starships, alternate timelines, and strange worlds with a slightly
+              analog, retro look.
+            </p>
+            <div class="genre-meta">
+              <span class="pill-tag">Space</span>
+              <span class="pill-tag">Thought-Provoking</span>
+            </div>
+          </article>
+
+          <article class="genre-card" data-genre="horror">
+            <header class="genre-header">
+              <span class="genre-chip">03</span>
+              <h3>Horror &amp; Suspense</h3>
+            </header>
+            <p class="genre-copy">
+              Slow builds, sharp cuts, and atmosphere. Best with the lights
+              slightly dim, not off.
+            </p>
+            <div class="genre-meta">
+              <span class="pill-tag">Tension</span>
+              <span class="pill-tag">Late Night</span>
+            </div>
+          </article>
+
+          <article class="genre-card" data-genre="comedy">
+            <header class="genre-header">
+              <span class="genre-chip">04</span>
+              <h3>Comedy &amp; Romance</h3>
+            </header>
+            <p class="genre-copy">
+              Easy-going stories, good dialogue, and endings that land on a
+              lighter note.
+            </p>
+            <div class="genre-meta">
+              <span class="pill-tag">Lighthearted</span>
+              <span class="pill-tag">Group Watch</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!--About -->
+      <section class="featured-section">
+        <h2 class="home-genres-heading" class="section-title">
+          WHY CHOOSE CINE-REWIND?
+        </h2>
+        <div class="section-intro">
+          <p>
+            Your go-to destination for classic movie rentals. Here's why
+            cinephiles love us:
+          </p>
+        </div>
+        <div id="info-grid" class="info-grid">
+          <article class="info-card">
+            <header class="info-header">
+              <h3>Extensive Catalog</h3>
+            </header>
+            <p class="info-copy">
+              Dive into a vast collection of timeless classics, cult favorites,
+              and hidden gems across all genres.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <header class="info-header">
+              <h3>User Reviews</h3>
+            </header>
+            <p class="info-copy">
+              Read honest reviews from fellow movie enthusiasts to help you
+              choose your next watch.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <header class="info-header">
+              <h3>Easy Rentals</h3>
+            </header>
+            <p class="info-copy">
+              Enjoy a seamless rental experience with flexible return options
+              and competitive pricing.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!--Store Info -->
+      <section class="featured-section">
+        <h2 class="home-genres-heading" class="section-title">
+          STORE INFORMATION
+        </h2>
+        <div class="section-intro">
+          <p>Need help? Want to know more about us? Reach out!</p>
+        </div>
+        <div id="info-grid" class="info-grid">
+          <article class="info-card">
+            <header class="info-header">
+              <h3>Contact Us</h3>
+            </header>
+            <p class="info-copy">
+              Email: <a href="mailto:z0ZQ6@example.com">z0ZQ6@example.com</a
+              ><br />
+              Phone: (123) 456-7890<br />
+              Address: 123 Retro St, Movietown, USA
+            </p>
+          </article>
+
+          <article class="info-card">
+            <header class="info-header">
+              <h3>Store Hours</h3>
+            </header>
+            <p class="info-copy">
+              Monday - Friday: 10:00 AM - 8:00 PM<br />
+              Saturday: 11:00 AM - 6:00 PM<br />
+              Sunday: Closed
+            </p>
+          </article>
+
+          <article class="info-card">
+            <header class="info-header">
+              <h3>Follow Us</h3>
+            </header>
+            <p class="info-copy">
+              Stay updated with our latest releases and promotions:<br />
+              Facebook:
+              <a href="https://www.facebook.com/CineRewind" target="_blank"
+                >CineRewind</a
+              ><br />
+              Twitter:
+              <a href="https://twitter.com/CineRewind" target="_blank"
+                >@CineRewind</a
+              ><br />
+              Instagram:
+              <a href="https://www.instagram.com/CineRewind" target="_blank"
+                >@CineRewind</a
+              >
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Cine-Rewind</h3>
+          <p>Your retro movie rental destination.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Catalog</a></li>
+            <li><a href="classics.html">Classics</a></li>
+            <li><a href="rent.html">Rent</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="aboutUs.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <address>
+            <p>123 Movie Lane</p>
+            <p>Hollywood, CA 90210</p>
+            <p>Email: info@cinerewind.com</p>
+          </address>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Cine-Rewind. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!--Authentication -->
+    <div id="auth-model-overlay" class="auth-model-overlay hidden">
+      <div class="auth-model">
+        <button class="auth-model-close" id="auth-model-close">&times;</button>
+        <div class="auth-model-header">
+          <h2 id="auth-modal-title" class="auth-modal-title">ACCESS GRANTED</h2>
+          <p class="auth-modal-subtitle">Enter Your Credentials</p>
+        </div>
+
+        <form id="auth-form" class="auth-form">
+          <div class="auth-form-group">
+            <label for="auth-email">Email / Username</label>
+            <input type="text" id="auth-email" name="auth-email" required />
+            <span class="auth-error" id="email-error"></span>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="auth-password">Password</label>
+            <input
+              type="password"
+              id="auth-password"
+              name="auth-password"
+              required
+            />
+            <span class="auth-error" id="password-error"></span>
+          </div>
+
+          <div class="auth-form-actions">
+            <button type="submit" class="auth-btn" id="auth-submit-btn">
+              SIGN IN
+            </button>
+            <button
+              type="button"
+              class="auth-btn auth-btn-secondary"
+              id="auth-register-btn"
+            >
+              CREATE ACCOUNT
+            </button>
+          </div>
+
+          <div class="auth-links">
+            <a href="#" id="auth-forgot-link">Forgot Password?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>
