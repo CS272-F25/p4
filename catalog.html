@@ -2,236 +2,227 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="CINE-REWIND Movie Rental Website" />
-    <title>CINEREWIND</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CINE-REWIND Movie Rental Website" />
+  <title>CINEREWIND</title>
 
-    <!--Boostrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <link href="css/global.css" rel="stylesheet" />
-    <link href="css/catalog.css" rel="stylesheet" />
-    <link href="css/auth.css" rel="stylesheet" />
-    <link href="css/cart.css" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link href="css/global.css" rel="stylesheet" />
+  <link href="css/catalog.css" rel="stylesheet" />
+  <link href="css/auth.css" rel="stylesheet" />
+  <link href="css/cart.css" rel="stylesheet" />
 
 </head>
 
 <body>
 
-    <!--Navigation bar-->
-    <nav class="main-nav" role="navigation">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <h1>◀ Cine-Rewind ▶</h1>
-            </a>
 
-            <!--Menu content-->
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="catalog.html">Catalog</a></li>
-                <li><a href="classics.html">Classics</a></li>
-                <li><a href="rent.html">Rent</a></li>
-                <li><a href="review.html">Reviews</a></li>
-                <li><a href="aboutUs.html">About Us</a></li>
-                <li>
-                    <button id="signin-btn" class="nav-signin-btn">Sign In</button>
-                    <span id="user-greeting" class="user-greeting" style="display: none;"></span>
-                    <button id="signout-btn" class="nav-signout-btn" style="display: none;">Sign Out</button>
-                </li>
-            </ul>
+  <nav class="main-nav" role="navigation">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <h1>◀ Cine-Rewind ▶</h1>
+      </a>
 
-            <div class="nav-header-actions">
-                <a href="cart.html" class="cart-icon-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                        class="bi bi-cart" viewBox="0 0 16 16">
-                        <path
-                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                    </svg>
-                    <span class="cart-badge" id="cart-count">0</span>
-                </a>
-            </div>
-        </div>
-    </nav>
 
-    <main id="main-content">
-        <header class="catalog-header">
-            <h1 class="page-title">Movie Catalog</h1>
-            <p class="page-subtitle">Explore a wide range of movies available for rent.</p>
-        </header>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="classics.html">Classics</a></li>
+        <li><a href="rent.html">Rent</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="aboutUs.html">About Us</a></li>
+        <li>
+          <button id="signin-btn" class="nav-btn">Sign In</button>
+          <span id="user-greeting" class="nav-greeting"></span>
+          <button id="signout-btn" class="nav-btn">Sign Out</button>
+        </li>
+      </ul>
 
-        <section class="genre-filters" aria-labelledby="genre-filters-heading">
-            <h2 id="genre-filters-heading" class="visually-hidden">Genre Filter Buttons</h2>
-            <div class="genre-buttons" role="group" aria-label="Genre filters">
-                <button class="genre-btn active" data-genre="all" aria-pressed="true">All</button>
-                <button class="genre-btn" data-genre="28" aria-pressed="false">Action</button>
-                <button class="genre-btn" data-genre="35" aria-pressed="false">Comedy</button>
-                <button class="genre-btn" data-genre="18" aria-pressed="false">Drama</button>
-                <button class="genre-btn" data-genre="27" aria-pressed="false">Horror</button>
-                <button class="genre-btn" data-genre="878" aria-pressed="false">Sci-Fi</button>
-                <button class="genre-btn" data-genre="53" aria-pressed="false">Thriller</button>
-                <button class="genre-btn" data-genre="10749" aria-pressed="false">Romance</button>
-                <button class="genre-btn" data-genre="16" aria-pressed="false">Animation</button>
-                <button class="genre-btn" data-genre="80" aria-pressed="false">Crime</button>
-            </div>
-        </section>
-
-        <section class="search-section" aria-labelledby="search-heading">
-            <h2 id="search-heading" class="visually-hidden">Search and Filter Movies</h2>
-            <div class="search-container">
-                <label for="movie-search" class="visually-hidden">Search movies by title</label>
-                <input type="text" id="movie-search" placeholder="Search movies by title..." aria-label="Search movies"
-                    autocomplete="off">
-                <button id="search-btn" type="button" aria-label="Search">🔍 Search</button>
-                <button id="clear-search-btn" type="button" aria-label="Clear search">Clear</button>
-            </div>
-
-            <div class="filter-container">
-                <details class="filter-details">
-                    <summary class="filter-summary">Advanced Filters</summary>
-                    <div class="filter-content">
-                        <label for="year-filter">Year:</label>
-                        <select id="year-filter" aria-label="Filter by year">
-                            <option value="">All Years</option>
-                            <option value="2024">2024</option>
-                            <option value="2023">2023</option>
-                            <option value="2022">2022</option>
-                            <option value="2021">2021</option>
-                            <option value="2020">2020</option>
-                            <option value="2019">2019</option>
-                        </select>
-
-                        <label for="rating-filter">Minimum Rating:</label>
-                        <select id="rating-filter" aria-label="Filter by minimum rating">
-                            <option value="">Any Rating</option>
-                            <option value="8">8.0+</option>
-                            <option value="7">7.0+</option>
-                            <option value="6">6.0+</option>
-                            <option value="5">5.0+</option>
-                        </select>
-
-                        <label for="sort-filter">Sort By:</label>
-                        <select id="sort-filter" aria-label="Sort movies">
-                            <option value="popularity">Popularity</option>
-                            <option value="rating">Rating</option>
-                            <option value="title">Title (A-Z)</option>
-                            <option value="year-desc">Year (Newest)</option>
-                            <option value="year-asc">Year (Oldest)</option>
-                        </select>
-                    </div>
-                </details>
-            </div>
-        </section>
-
-        <div id="selected-genre" class="selected-genre" role="status" aria-live="polite"></div>
-
-        <div id="loading-indicator" class="loading-indicator" role="status" aria-live="polite">
-            <p>Loading movies...</p>
-        </div>
-
-        <section class="movies-section" aria-labelledby="movies-heading">
-            <h2 id="movies-heading" class="visually-hidden">Movie Listings</h2>
-            <div id="movies-grid" class="movies-grid" role="list" aria-label="Movie catalog">
-            </div>
-        </section>
-
-        <nav class="pagination-container" aria-label="Movie catalog pagination">
-            <button id="prev-page" class="pagination-btn" aria-label="Previous page" disabled>← Previous</button>
-            <span id="page-info" class="page-info">Page 1</span>
-            <button id="next-page" class="pagination-btn" aria-label="Next page">Next →</button>
-        </nav>
-
-        <div id="empty-state" class="empty-state" role="alert" aria-live="polite" style="display: none;">
-            <p>No movies found. Try adjusting your search or filters.</p>
-        </div>
-    </main>
-
-    <!-- Footer -->
-
-    <footer class="main-footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Cine-Rewind</h3>
-          <p>Your retro movie rental destination.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="catalog.html">Catalog</a></li>
-            <li><a href="classics.html">Classics</a></li>
-            <li><a href="rent.html">Rent</a></li>
-            <li><a href="review.html">Reviews</a></li>
-            <li><a href="aboutUs.html">About Us</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <address>
-            <p>123 Movie Lane</p>
-            <p>Hollywood, CA 90210</p>
-            <p>Email: info@cinerewind.com</p>
-          </address>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 Cine-Rewind. All Rights Reserved.</p>
-        </div>
-      </div>
-    </footer>
-
-    <!--Authentication -->
-    <div id="auth-modal-overlay" class="auth-modal-overlay">
-      <div class="auth-modal">
-        <button class="auth-modal-close" id="auth-modal-close">✕</button>
-       
-        <div class="auth-modal-header">
-          <h2 id="auth-modal-title" class="auth-modal-title">ACCESS GRANTED</h2>
-          <p class="auth-modal-subtitle">Enter Your Credentials</p>
-        </div>
-
-        <form id="auth-form" class="auth-form" novalidate>
-          <div class="auth-form-group">
-            <label for="auth-email">Email / Username</label>
-            <input type="text" id="auth-email" name="auth-email" required autocomplete="username" 
-            placeholder="Enter your email or username"/>
-            <span class="auth-error" id="email-error"></span>
-          </div>
-
-          <div class="auth-form-group">
-            <label for="auth-password">Password</label>
-            <input
-              type="password"
-              id="auth-password"
-              name="password"
-              required
-              autocomplete="current-password"
-              placeholder="Enter your password"
-            />
-            <span class="auth-error" id="password-error"></span>
-          </div>
-
-          <div class="auth-form-actions">
-            <button type="submit" class="auth-btn" id="auth-submit-btn">
-              SIGN IN
-            </button>
-            <button
-              type="button" class="auth-btn auth-btn-secondary"
-              id="auth-register-btn"
-            >
-              CREATE ACCOUNT
-            </button>
-          </div>
-
-          <div class="auth-links">
-            <a href="#" id="auth-forgot-link">Forgot Password?</a>
-          </div>
-        </form>
+      <div class="nav-header-actions">
+        <a href="cart.html" class="cart-icon-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart"
+            viewBox="0 0 16 16">
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+          </svg>
+          <span class="cart-badge" id="cart-count">0</span>
+        </a>
       </div>
     </div>
-    <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
-    <script src="js/auth.js"></script>
-    <script src="js/catalog.js"></script>
-    <script src="js/cart.js"></script>
+  </nav>
+
+  <main id="main-content">
+    <header class="catalog-header">
+      <h1 class="page-title">Movie Catalog</h1>
+      <p class="page-subtitle">Explore a wide range of movies available for rent.</p>
+    </header>
+
+    <section class="genre-filters" aria-labelledby="genre-filters-heading">
+      <h2 id="genre-filters-heading" class="visually-hidden">Genre Filter Buttons</h2>
+      <div class="genre-buttons" role="group" aria-label="Genre filters">
+        <button class="genre-btn active" data-genre="all" aria-pressed="true">All</button>
+        <button class="genre-btn" data-genre="28" aria-pressed="false">Action</button>
+        <button class="genre-btn" data-genre="35" aria-pressed="false">Comedy</button>
+        <button class="genre-btn" data-genre="18" aria-pressed="false">Drama</button>
+        <button class="genre-btn" data-genre="27" aria-pressed="false">Horror</button>
+        <button class="genre-btn" data-genre="878" aria-pressed="false">Sci-Fi</button>
+        <button class="genre-btn" data-genre="53" aria-pressed="false">Thriller</button>
+        <button class="genre-btn" data-genre="10749" aria-pressed="false">Romance</button>
+        <button class="genre-btn" data-genre="16" aria-pressed="false">Animation</button>
+        <button class="genre-btn" data-genre="80" aria-pressed="false">Crime</button>
+      </div>
+    </section>
+
+    <section class="search-section" aria-labelledby="search-heading">
+      <h2 id="search-heading" class="visually-hidden">Search and Filter Movies</h2>
+      <div class="search-container">
+        <label for="movie-search" class="visually-hidden">Search movies by title</label>
+        <input type="text" id="movie-search" placeholder="Search movies by title..." aria-label="Search movies"
+          autocomplete="off">
+        <button id="search-btn" type="button" aria-label="Search">Search</button>
+        <button id="clear-search-btn" type="button" aria-label="Clear search">Clear</button>
+      </div>
+
+      <div class="filter-container">
+        <details class="filter-details">
+          <summary class="filter-summary">Advanced Filters</summary>
+          <div class="filter-content">
+            <label for="year-filter">Year:</label>
+            <select id="year-filter" aria-label="Filter by year">
+              <option value="">All Years</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+            </select>
+
+            <label for="rating-filter">Minimum Rating:</label>
+            <select id="rating-filter" aria-label="Filter by minimum rating">
+              <option value="">Any Rating</option>
+              <option value="8">8.0+</option>
+              <option value="7">7.0+</option>
+              <option value="6">6.0+</option>
+              <option value="5">5.0+</option>
+            </select>
+
+            <label for="sort-filter">Sort By:</label>
+            <select id="sort-filter" aria-label="Sort movies">
+              <option value="popularity">Popularity</option>
+              <option value="rating">Rating</option>
+              <option value="title">Title (A-Z)</option>
+              <option value="year-desc">Year (Newest)</option>
+              <option value="year-asc">Year (Oldest)</option>
+            </select>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <div id="selected-genre" class="selected-genre" role="status" aria-live="polite"></div>
+
+    <div id="loading-indicator" class="loading-indicator" role="status" aria-live="polite">
+      <p>Loading movies...</p>
+    </div>
+
+    <section class="movies-section" aria-labelledby="movies-heading">
+      <h2 id="movies-heading" class="visually-hidden">Movie Listings</h2>
+      <div id="movies-grid" class="movies-grid" role="list" aria-label="Movie catalog">
+      </div>
+    </section>
+
+    <nav class="pagination-container" aria-label="Movie catalog pagination">
+      <button id="prev-page" class="pagination-btn" aria-label="Previous page" disabled>← Previous</button>
+      <span id="page-info" class="page-info">Page 1</span>
+      <button id="next-page" class="pagination-btn" aria-label="Next page">Next →</button>
+    </nav>
+
+    <div id="empty-state" class="empty-state" role="alert" aria-live="polite" style="display: none;">
+      <p>No movies found. Try adjusting your search or filters.</p>
+    </div>
+  </main>
+
+
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Cine-Rewind</h3>
+        <p>Your retro movie rental destination.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalog.html">Catalog</a></li>
+          <li><a href="classics.html">Classics</a></li>
+          <li><a href="rent.html">Rent</a></li>
+          <li><a href="review.html">Reviews</a></li>
+          <li><a href="aboutUs.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <address>
+          <p>123 Movie Lane</p>
+          <p>Hollywood, CA 90210</p>
+          <p>Email: info@cinerewind.com</p>
+        </address>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cine-Rewind. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <div id="auth-modal-overlay" class="auth-modal-overlay">
+    <div class="auth-modal">
+      <button class="auth-modal-close" id="auth-modal-close">✕</button>
+
+      <div class="auth-modal-header">
+        <h2 id="auth-modal-title" class="auth-modal-title">ACCESS GRANTED</h2>
+        <p class="auth-modal-subtitle">Enter Your Credentials</p>
+      </div>
+
+      <form id="auth-form" class="auth-form" novalidate>
+        <div class="auth-form-group">
+          <label for="auth-email">Email / Username</label>
+          <input type="text" id="auth-email" name="auth-email" required autocomplete="username"
+            placeholder="Enter your email or username" />
+          <span class="auth-error" id="email-error"></span>
+        </div>
+
+        <div class="auth-form-group">
+          <label for="auth-password">Password</label>
+          <input type="password" id="auth-password" name="password" required autocomplete="current-password"
+            placeholder="Enter your password" />
+          <span class="auth-error" id="password-error"></span>
+        </div>
+
+        <div class="auth-form-actions">
+          <button type="submit" class="auth-btn" id="auth-submit-btn">
+            SIGN IN
+          </button>
+          <button type="button" class="auth-btn auth-btn-secondary" id="auth-register-btn">
+            CREATE ACCOUNT
+          </button>
+        </div>
+
+        <div class="auth-links">
+          <a href="#" id="auth-forgot-link">Forgot Password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 
 </html>

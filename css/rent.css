@@ -1,0 +1,30 @@
+.rent-card{
+    background: var(--retro-gray);
+    border: 2px solid var(--retro-cyan);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.rent-header {
+    color:aqua;
+    text-shadow: 0 0 10px var(--retro-cyan);
+}
+
+input, select {
+    background-color: hwb(199 2% 75% / 0.98);
+    border-color: cyan;
+    color: aliceblue;
+}
+
+.title {
+    font-family: "roboto condensed", sans-serif;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: aqua;
+    text-shadow: 0 0 10px var(--retro-cyan), 0 0 20px var(--retro-cyan), 0 0 30px var(--retro-blue), 2px 2px 4px rgba(0, 0, 0, 0.9);
+    font-size: 4.75rem;
+}
