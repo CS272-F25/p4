@@ -1,7 +1,3 @@
-/**
- * Get reviews
- * @returns {Array}
- */
 function getReviews() {
   const reviews = localStorage.getItem('movieReviews');
   return reviews ? JSON.parse(reviews) : [];
@@ -11,10 +7,20 @@ function saveReviews(reviews) {
   localStorage.setItem('movieReviews', JSON.stringify(reviews));
 }
 
-function addReview(reviewData) {
+async function fetchPosterUrl(title) {
+  const cleanedTitle = (title || 'movie').trim();
+  if (!cleanedTitle) {
+    return 'https://via.placeholder.com/300x450/0a0a0f/00ffff?text=Movie+Poster';
+  }
+  const query = encodeURIComponent(cleanedTitle);
+  return `https://source.unsplash.com/400x600/?movie,${query}`;
+}
+
+async function addReview(reviewData) {
   const reviews = getReviews();
+  const posterUrl = await fetchPosterUrl(reviewData['movie-title']);
   const newReview = Object.assign(
-    { id: Date.now(), date: new Date().toISOString() },
+    { id: Date.now(), date: new Date().toISOString(), posterUrl },
     reviewData
   );
 
@@ -43,22 +49,31 @@ function createReviewCard(review) {
   const rating = parseInt(review.rating) || 5;
   const stars = createStarRating(rating);
 
+  const posterMarkup = review.posterUrl
+    ? `<figure class="review-poster">
+         <img src="${review.posterUrl}" alt="Poster for ${escapeHtml(review['movie-title'] || 'movie')}" loading="lazy" />
+       </figure>`
+    : '';
+
   card.innerHTML = `
-    <div class="review-card-header">
-      <div class="review-meta">
-        <h3 class="review-movie-title">${review['movie-title']}</h3>
-        ${review['reviewer-name'] ? `<p class="review-reviewer">By ${escapeHtml(review['reviewer-name'])}</p>` : ''}
+    ${posterMarkup}
+    <div class="review-content">
+      <div class="review-card-header">
+        <div class="review-meta">
+          <h3 class="review-movie-title">${review['movie-title']}</h3>
+          ${review['reviewer-name'] ? `<p class="review-reviewer">By ${escapeHtml(review['reviewer-name'])}</p>` : ''}
+        </div>
+        <div class="review-rating">
+          <span class="stars" aria-label="${rating} out of 5 stars">${stars}</span>
+          <span class="rating-number">${rating}/5</span>
+        </div>
       </div>
-      <div class="review-rating">
-        <span class="stars" aria-label="${rating} out of 5 stars">${stars}</span>
-        <span class="rating-number">${rating}/5</span>
+      <div class="review-card-body">
+        <p class="review-text">${escapeHtml(review['review-text'])}</p>
       </div>
-    </div>
-    <div class="review-card-body">
-      <p class="review-text">${escapeHtml(review['review-text'])}</p>
-    </div>
-    <div class="review-card-footer">
-      <time datetime="${review.date}" class="review-date">${reviewDate}</time>
+      <div class="review-card-footer">
+        <time datetime="${review.date}" class="review-date">${reviewDate}</time>
+      </div>
     </div>
   `;
 
@@ -116,7 +131,7 @@ function updateCharCount() {
   }
 }
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
 
   const form = document.getElementById('review-form');
@@ -124,7 +139,7 @@ function handleFormSubmit(e) {
   const formData = new FormData(form);
   const reviewData = Object.fromEntries(formData);
 
-  addReview(reviewData);
+  await addReview(reviewData);
 
   form.reset();
   document.getElementById('char-count').textContent = '0';
@@ -148,7 +163,7 @@ function initFormListeners() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  updateCartCount(); // assuming you have this defined elsewhere
+  updateCartCount();
   initFormListeners();
   displayReviews();
 });
