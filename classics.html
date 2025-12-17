@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our retro classics collection at CineRewind. Discover timeless movies from the golden age of cinema.">
+    <title>Classics</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/classics.css">      
+</head>
+
+<body>
+
+
+ <nav class="main-nav" role="navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <h1>◀ Cine-Rewind ▶</h1>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="classics.html">Classics</a></li>
+                <li><a href="rent.html">Rent</a></li>
+                <li><a href="review.html">Reviews</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li>
+                    <button id="signin-btn" class="nav-btn">Sign In</button>
+                    <span id="user-greeting" class="nav-greeting"></span>
+                    <button id="signout-btn" class="nav-btn">Sign Out</button>
+                </li>
+            </ul>
+
+    <main id="main-content">
+       <header class="classics-header">
+            <h1 class="page-title">📼 RETRO CLASSICS 📼</h1>
+            <p class="page-subtitle">Timeless movies you can always rewatch</p>
+            <p class="classics-intro">Explore our curated movie collection and enjoy the best of the best films.</p>
+        </header> 
+        <section class="era-filters" aria-labelledby="era-heading">
+            <h2 id="era-heading" class="visually-hidden">Filter by Era</h2>
+            <div class="era-buttons" role="group" aria-label="Era filters">
+                <button class="era-btn active" data-era="all" aria-pressed="true">All Eras</button>
+                <button class="era-btn" data-era="1940s" aria-pressed="false">1940s</button>
+                <button class="era-btn" data-era="1950s" aria-pressed="false">1950s</button>
+                <button class="era-btn" data-era="1960s" aria-pressed="false">1960s</button>
+                <button class="era-btn" data-era="1970s" aria-pressed="false">1970s</button>
+                <button class="era-btn" data-era="1980s" aria-pressed="false">1980s</button>
+                <button class="era-btn" data-era="1990s" aria-pressed="false">1990s</button>
+                <button class="era-btn" data-era="2000s" aria-pressed="false">1990s</button>
+                <button class="era-btn" data-era="2010s" aria-pressed="false">1990s</button>
+                <button class="era-btn" data-era="2020s" aria-pressed="false">1990s</button>
+            </div>
+        </section>
+
+        <section class="featured-classics" aria-labelledby="featured-heading">
+            <h2 id="featured-heading" class="section-title">Featured Classics</h2>
+            <div id="classics-grid" class="classics-grid" role="list" aria-label="Classic movies">
+            </div>
+        </section>
+
+    </main>
+
+
+</body>
+
+
+
+</html>
