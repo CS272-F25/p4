@@ -8,12 +8,14 @@
     --retro-light-blue: #00d9ff;
     --retro-light: #e0e7ff;
     --retro-orange: #ff6600;
+    --retro-yellow: var(--retro-cyan);
+    --retro-cream: #f6f0e1;
+    --retro-accent: #00d9ff;
 }
-
 
 body{
     margin: 0;
-    font-family: 'Roboto Condensed', Courier, monospace;
+    font-family: 'Roboto Condensed', 'Orbitron', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -29,8 +31,6 @@ p{
     margin-top: 0;
     margin-bottom: 1rem;
 }
-
-
 
 a{
     color: #12bbad;
@@ -53,15 +53,10 @@ svg{
     vertical-align: middle;
 }
 
-
-/* ========================================*/
-
 label{
     display: inline-block;
     margin-bottom: 0.5rem;
 }
-
-
 
 button{
     border-radius: 0;
@@ -71,18 +66,10 @@ button:focus{
     outline: 1px dotted;
 }
 
-
-
-
-
-
-/* ========================================*/
-
-/* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Roboto+Condensed:wght@300;400;700&family=Audiowide&display=swap'); */
 .main-nav{
     background: linear-gradient(180deg, var(--retro-gray) 0%, var(--retro-darker) 100%);
     padding: 1rem 0;
-    /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8); */
+    
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -128,10 +115,6 @@ button:focus{
     flex-wrap: wrap;
 }
 
-/* .nav-menu li{
-    margin: 0;
-} */
-
 .nav-menu a{
     color: var(--retro-light);
     text-decoration: none;
@@ -146,15 +129,11 @@ button:focus{
     border: 2.5px solid transparent;
     background: rgba(255, 255, 255, 0.1);
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    /* font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.3s ease; */
+    
 }
 
 .nav-menu a:hover{
-    /* background: var(--retro-light-blue); */
+    
     background: rgba(0, 255, 255, 0.1);
     color: var(--retro-cyan);
     border-color: var(--retro-cyan);
@@ -166,7 +145,6 @@ button:focus{
     outline-offset: 2px;
 }
 
-/* ========================================*/
 .nav-header-actions{
     display: flex;
     align-items: center;
@@ -193,14 +171,13 @@ button:focus{
 
 .cart-icon-btn:hover, 
 .cart-icon-btn:focus{
-    /* background: var(--retro-cyan); */
+    
     background: rgba(0, 255, 255, 0.1);
     border-color: var(--retro-cyan);
     color: var(--retro-light-blue);
     box-shadow: 0 0 20px var(--retro-cyan);
 
 }
-
 
 .cart-icon-btn svg{
     width: 24px;
@@ -230,32 +207,70 @@ button:focus{
     padding: 0 2px;
 }
 
-/* .cart-icon-btn:focus{
-    outline: 2px solid var(--retro-light-blue);
-    outline-offset: 2px;
-} */
-
-/* ========================================*/
 .main-footer{
     background: linear-gradient(180deg, var(--retro-gray) 0%, var(--retro-darker) 100%);
     color: var(--retro-light);
-    padding: 2rem 0 1rem;
+    padding: 2.5rem 0 1.5rem;
     margin-top: auto;
     border-top: 3px solid var(--retro-cyan);
     border-bottom: 2px solid var(--retro-purple);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* .footer-content{
+.footer-content{
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
-    margin-bottom: 1rem;
-} */
+    margin-bottom: 1.25rem;
+}
 
-/*=========================================*/
+.footer-section h3,
+.footer-section h4{
+    font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 0.75rem;
+    color: var(--retro-cyan);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+.footer-section p,
+.footer-section a,
+.footer-section address{
+    font-family: 'Roboto Condensed', sans-serif;
+    color: var(--retro-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 0.5rem;
+}
+
+.footer-section a:hover,
+.footer-section a:focus{
+    color: var(--retro-light-blue);
+    text-shadow: 0 0 10px var(--retro-cyan);
+}
+
+.footer-section ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.footer-bottom{
+    border-top: 1px solid rgba(0, 255, 255, 0.2);
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--retro-light);
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 1px;
+}
+
 .btn-primary {
     display: inline-block;
     padding: 0.85rem 2.5rem;
@@ -268,7 +283,7 @@ button:focus{
     box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     border: 2px solid var(--retro-cyan);
     cursor: pointer;
-    font-family: 'Roboto Condensed', Courier, monospace;
+    font-family: 'Roboto Condensed', 'Orbitron', sans-serif;
     text-transform: uppercase;
     letter-spacing: 3px;
 
@@ -276,19 +291,12 @@ button:focus{
 
 .btn-primary:hover, 
 .btn-primary:focus{
-    /* background: var(--retro-cyan); */
+    
     background: rgba(0, 255, 255, 0.2);
     border-color: var(--retro-cyan);
     color: var(--retro-light-blue);
     box-shadow: 0 0 20px var(--retro-cyan);
 }
-
-
-/* ===============================
-   Additional Section Styles
-   =============================== */
-
-/* =====WELCOME SECTION===== */
 
 .hero{
     text-align: center;
@@ -312,14 +320,11 @@ button:focus{
     line-height: 1.6;
 }
 
-/* =========GRID SECTIONS======== */
 .info-grid, 
 .genre-grid{
     display: grid;
     gap: 1.5rem;
 }
-
-/*=====CARD SECTIONS=====*/
 
 .info-card,
 .genre-card{
@@ -360,19 +365,11 @@ button:focus{
     color: var(--retro-light);
 }
 
-/* .genre-chip:hover{
-    background: var(--retro-cyan);
-    border-color: var(--retro-light-blue);
-    color: var(--retro-dark);
-} */
-
-/* ======Info section spacing===== */
 .info-section .info-card h3 {
     margin-top: 0;
     margin-bottom: 0.75rem;
   }
 
-/* ===Button style === */
 .hero .btn-primary, 
 .featured-section .btn-primary {
     margin-top: 0.5rem;

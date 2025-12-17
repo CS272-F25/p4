@@ -1,151 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta description="CINE-REWIND Movie Rental Website" />
-    <title>Rentals</title>
-    <!--Boostrap-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link href="css/global.css" rel="stylesheet" />
-    <link href="css/rent.css" rel="stylesheet" />
-    <script src="rent.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta description="CINE-REWIND Movie Rental Website" />
+  <title>Rentals</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link href="css/global.css" rel="stylesheet" />
+  <link href="css/rent.css" rel="stylesheet" />
+  <link href="css/auth.css" rel="stylesheet" />
+  <script src="js/rent.js" defer></script>
+  <script src="js/auth.js" defer></script>
 </head>
 
 <body>
-    <!--Navigation bar-->
-    <nav class="main-nav" role="navigation">
-      <div class="nav-container">
-        <a href="index.html" class="logo">
-          <h1>◀ Cine-Rewind ▶</h1>
+
+  <nav class="main-nav" role="navigation">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <h1>◀ Cine-Rewind ▶</h1>
+      </a>
+
+
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="classics.html">Classics</a></li>
+        <li><a href="rent.html">Rent</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="aboutUs.html">About Us</a></li>
+        <li>
+          <button id="signin-btn" class="nav-btn">Sign In</button>
+          <span id="user-greeting" class="nav-greeting"></span>
+          <button id="signout-btn" class="nav-btn">Sign Out</button>
+        </li>
+      </ul>
+
+      <div class="nav-header-actions">
+        <a href="cart.html" class="cart-icon-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart"
+            viewBox="0 0 16 16">
+            <path
+              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+          </svg>
+          <span class="cart-badge" id="cart-count">0</span>
         </a>
+      </div>
+    </div>
+  </nav>
 
-        <!--Menu content-->
-        <ul class="nav-menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="catalog.html">Catalog</a></li>
-          <li><a href="classics.html">Classics</a></li>
-          <li><a href="rent.html">Rent</a></li>
-          <li><a href="review.html">Reviews</a></li>
-          <li><a href="aboutUs.html">About Us</a></li>
-          <li>
-            <button id="signin-btn" class="nav-btn">Sign In</button>
-            <span id="user-greeting" class="nav-greeting"></span>
-            <button id="signout-btn" class="nav-btn">Sign Out</button>
-          </li>
-        </ul>
+  <main>
 
-        <div class="nav-header-actions">
-          <a href="cart.html" class="cart-icon-btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="currentColor"
-              class="bi bi-cart"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
-              />
-            </svg>
-            <span class="cart-badge" id="cart-count">0</span>
-          </a>
+    <section class="hero">
+      <h1 class="title">Rent Movies</h1>
+      <p class="hero-description">Complete your Rental Information Here!</p>
+    </section>
+
+
+    <div class="rent-card" style="margin-left: 100px; margin-right: 100px;">
+      <h2 class="retro-title">Movies to Rent</h2>
+      <div class="moviesToRent">
+        <p class="empty-cart">No movies in your rental cart. Go to the <a href="catalog.html">Catalog</a> to add some!
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-3">
+
+      <div class="col-12 col-md-8">
+        <div class="rent-card" style="margin-left: 100px;">
+          <h2 class="retro-title">Rental Information</h2>
+          <h3 class="rent-header">Personal Information</h3>
+          <div class="info-card">
+            <form class="personal-info">
+              <label for="username">Username </label><br>
+              <input type="text" id="username" name="username" placeholder="e.g. johnathandoe@gmail.com">
+              <br>
+              <br>
+              <label for="password">Password </label><br>
+              <input type="text" id="password" name="password" placeholder="e.g. 4321drowssap">
+              <br>
+              <br>
+              <label for="phoneNumber">Phone Number </label><br>
+              <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g. 608-256-0056">
+            </form>
+          </div>
+          <br>
+          <h3 class="rent-header">Rental Details</h3>
+          <div class="info-card">
+            <form class="personal-info">
+              <label for="date">Rental Start Date </label><br>
+              <input type="text" id="date" name="date" placeholder="MM/DD/YYYY">
+              <br>
+              <br>
+              <label for="rentPeriod">Rent Period </label><br>
+              <select id="rentPeriod" name="rentPeriod">
+                <option value="">-- Please select an option --</option>
+                <option value="1_day">1 Days: $1</option>
+                <option value="2_day">2 Days: $2</option>
+                <option value="4_day">4 Days: $4</option>
+                <option value="10_day">10 Days: $10</option>
+              </select>
+              <br>
+              <br>
+              <label for="paymentMethod">Payment Method </label><br>
+              <select id="paymentMethod" name="paymentMethod">
+                <option value="">-- Please select an option --</option>
+                <option value="credit">Credit Card</option>
+                <option value="debit">Debit Card</option>
+                <option value="paypal">Paypal</option>
+                <option value="cash">Cash</option>
+              </select>
+            </form>
+          </div>
+          <br>
+          <br>
+          <section class="hero">
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="complete-rent">Complete Rental</button>
+            </div>
+          </section>
+
         </div>
       </div>
-    </nav>
 
-    <main>
-        <!-- title -->
-        <section class="hero">
-            <h1 class="title">Rent Movies</h1>
-            <p class="hero-description">Complete your Rental Information Here!</p>
-        </section>
-
-        <!-- Rental Cart -->
-        <div class="rent-card" style="margin-left: 100px; margin-right: 100px;">
-            <h2 class="retro-title">Movies to Rent</h2>
-            <div class="moviesToRent">
-                <p class="empty-cart">No movies in your rental cart. Go to the <a href="catalog.html">Catalog</a> to add some!</p>
-            </div>
+      <div class="col-12 col-md-4">
+        <div class="rent-card" style="margin-right: 100px;">
+          <h2 class="retro-title">Purchase History</h2>
+          <div id="rental-history" class="rental-history">
+            <p class="empty-history">No rental history yet. Complete a rental to see it here!</p>
+          </div>
         </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </main>
 
-        <div class="row g-3">
-            <!-- Rental Information -->
-            <div class="col-12 col-md-8">
-                <div class="rent-card" style="margin-left: 100px;">
-                    <h2 class="retro-title">Rental Information</h2>
-                    <h3 class="rent-header">Personal Information</h3>
-                    <div class="info-card">
-                        <form class="personal-info">
-                            <label for="username">Username </label><br>
-                            <input type="text" id="username" name="username" placeholder="e.g. johnathandoe@gmail.com">
-                            <br>
-                            <br>
-                            <label for="password">Password </label><br>
-                            <input type="text" id="password" name="password" placeholder="e.g. 4321drowssap">
-                            <br>
-                            <br>
-                            <label for="phoneNumber">Phone Number </label><br>
-                            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g. 608-256-0056">
-                        </form>
-                    </div>
-                    <br>
-                    <h3 class="rent-header">Rental Details</h3>
-                    <div class="info-card">
-                        <form class="personal-info">
-                            <label for="date">Rental Start Date </label><br>
-                            <input type="text" id="date" name="date" placeholder="MM/DD/YYYY">
-                            <br>
-                            <br>
-                            <label for="rentPeriod">Rent Period </label><br>
-                            <select id="rentPeriod" name="rentPeriod">
-                                <option value="">-- Please select an option --</option>
-                                <option value="1_day">1 Days: $1</option>
-                                <option value="2_day">2 Days: $2</option>
-                                <option value="4_day">4 Days: $4</option>
-                                <option value="10_day">10 Days: $10</option>
-                            </select>
-                            <br>
-                            <br>
-                            <label for="paymentMethod">Payment Method </label><br>
-                            <select id="paymentMethod" name="paymentMethod">
-                                <option value="">-- Please select an option --</option>
-                                <option value="credit">Credit Card</option>
-                                <option value="debit">Debit Card</option>
-                                <option value="paypal">Paypal</option>
-                                <option value="cash">Cash</option>
-                            </select>
-                        </form>
-                    </div>
-                    <br>
-                    <br>
-                    <section class="hero">
-                        <div class="form-actions">
-                            <button type="submit" class="btn-primary" id="complete-rent">Complete Rental</button>
-                        </div>
-                    </section>
-
-                </div>
-            </div>
-            <!-- Rental History -->
-            <div class="col-12 col-md-4">
-                <div class="rent-card" style="margin-right: 100px;">
-                    <h2 class="retro-title">Purchase History</h2>
-                    <div id="rental-history" class="rental-history">
-                        <p class="empty-history">No rental history yet. Complete a rental to see it here!</p>
-                    </div>
-                </div>
-            </div>
+  <div id="auth-modal-overlay" class="auth-modal-overlay" aria-labelledby="auth-modal-title" aria-modal="true">
+    <div class="auth-modal">
+      <button class="auth-modal-close" id="auth-modal-close" aria-label="Close sign in modal">✕</button>
+      <div class="auth-modal-header">
+        <h2 id="auth-modal-title" class="auth-modal-title">ACCESS GRANTED</h2>
+        <p class="auth-modal-subtitle">Enter Your Credentials</p>
+      </div>
+      <form id="auth-form" class="auth-form" novalidate>
+        <div class="auth-form-group">
+          <label for="auth-email">Email / Username</label>
+          <input type="text" id="auth-email" name="email" required autocomplete="username" placeholder="Enter your email or username" aria-required="true" aria-describedby="email-error">
+          <span id="email-error" class="auth-error"></span>
         </div>
-        <br>
-        <br>
-    </main>
+        <div class="auth-form-group">
+          <label for="auth-password">Password</label>
+          <input type="password" id="auth-password" name="password" required autocomplete="current-password" placeholder="Enter your password" aria-required="true" aria-describedby="password-error">
+          <span id="password-error" class="auth-error"></span>
+        </div>
+        <div class="auth-form-actions">
+          <button type="submit" class="auth-btn" id="auth-submit-btn">
+            ▸▸ SIGN IN ▸▸
+          </button>
+          <button type="button" class="auth-btn auth-btn-secondary" id="auth-register-btn">
+            CREATE ACCOUNT
+          </button>
+        </div>
+        <div class="auth-links">
+          <a href="#auth-forgot-password" id="auth-forgot-link">Forgot Password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
 
 </body>
+
 </html>

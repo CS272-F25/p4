@@ -1,9 +1,7 @@
-// TMDB API Configuration
-const TMDB_API_KEY = 'YOUR_API_KEY_HERE'; // Replace with actual API key
+const TMDB_API_KEY = 'YOUR_API_KEY_HERE';
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
-// Global state
 let currentPage = 1;
 let allMovies = [];
 let filteredMovies = [];
@@ -13,7 +11,6 @@ let minRating = '';
 let sortBy = 'popularity';
 let currentGenre = 'all';
 
-// Genre names mapping
 const genreNames = {
     '28': 'Action',
     '35': 'Comedy',
