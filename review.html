@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>   
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Share your thoughts about your favorite films!">
-    <title>Reviews</title>
-    <link rel="stylesheet" href="css/global.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Share your thoughts about your favorite films!">
+  <title>Reviews</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/review.css">
 </head>
 
-
 <body>
-
- <!--Navigation bar-->
- <nav class="main-nav" role="navigation">
+    <!--Navigation bar-->
+    <nav class="main-nav" role="navigation">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <h1>◀ Cine-Rewind ▶</h1>
+                <h1>◀ Cine-Rewind ▶</h1>   
             </a>
 
-<!--Menu content-->
+            <!--Menu content-->
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="catalog.html">Catalog</a></li>
@@ -33,89 +32,92 @@
                 </li>
             </ul>
 
+  <main id="main-content">
+    <header class="review-header">
+      <h1 class="page-title">Reviews</h1>
+      <p class="page-subtitle">Share what you love about movies and read what others are saying!</p>
+    </header>
 
-    <main id="main-content">
-        <header class="review-header">
-            <h1 class="page-title">Reviews</h1>
-            <p class="page-subtitle">Share what you love about movies and read what others are saying!</p>
-        </header>
+    <div class="review-container">
+      
+      <section class="review-form-section" aria-labelledby="form-heading">
+        <h2 id="form-heading" class="section-title">Write a Review</h2>
+        <form id="review-form" class="review-form" novalidate>
+          
+          
+          <div class="form-group">
+            <label for="movie-title">Movie Title <span class="required">*</span></label>
+            <input type="text" id="movie-title" name="movie-title" required aria-required="true"
+                   aria-describedby="title-error" placeholder="Enter movie title here" autocomplete="off">
+            <span id="title-error" class="error-message" role="alert"></span>
+          </div>
 
-        <div class="review-container">
-            <section class="review-form-section" aria-labelledby="form-heading">
-                <h2 id="form-heading" class="section-title">Write a Review</h2>
-                <form id="review-form" class="review-form" novalidate>
-                    <div class="form-group">
-                        <label for="movie-title">Movie Title<span class="required">*</span></label>
-                        <input type="text" id="movie-title" name="movie-title" required aria-required="true"
-                                aria-describedby="title-error" placeholder="Enter movie title here" autocomplete="off"?\>
-                        <span id="title-error" class="error-message" role="alert"></span>
-                    </div>
+          
+          <div class="form-group">
+            <label for="reviewer-name">Your Name</label>
+            <input type="text" id="reviewer-name" name="reviewer-name" placeholder="Enter your name">
+          </div>
 
-                    <div class="form-group">
-                        <label for="rating">Rating <span class="required">*</span></label>
-                        <div class="rating-input" role="radiogroup" aria-labelledby="rating-label">
-                            <span id="rating-label" class="visually-hidden">Select rating</span>
-                            <label class="rating-label">
-                                <input type="radio" name="rating" value="5" required aria-required="true">
-                                <span class="star" aria-label="5 stars">⭐⭐⭐⭐⭐</span>
-                            </label>
-                            <label class="rating-label">
-                                <input type="radio" name="rating" value="4" required aria-required="true">
-                                <span class="star" aria-label="4 stars">⭐⭐⭐⭐</span>
-                            </label>
-                            <label class="rating-label">
-                                <input type="radio" name="rating" value="3" required aria-required="true">
-                                <span class="star" aria-label="3 stars">⭐⭐⭐</span>
-                            </label>
-                            <label class="rating-label">
-                                <input type="radio" name="rating" value="2" required aria-required="true">
-                                <span class="star" aria-label="2 stars">⭐⭐</span>
-                            </label>
-<span id="rating-error" class="error-message" role="alert"></span>
+          
+          <div class="form-group">
+            <label for="rating">Rating <span class="required">*</span></label>
+            <div class="rating-input" role="radiogroup" aria-labelledby="rating-label">
+              <span id="rating-label" class="visually-hidden">Select rating</span>
+              <label class="rating-label">
+                <input type="radio" name="rating" value="5" required aria-required="true">
+                <span class="star" aria-label="5 stars">⭐⭐⭐⭐⭐</span>
+              </label>
+              <label class="rating-label">
+                <input type="radio" name="rating" value="4" required aria-required="true">
+                <span class="star" aria-label="4 stars">⭐⭐⭐⭐</span>
+              </label>
+              <label class="rating-label">
+                <input type="radio" name="rating" value="3" required aria-required="true">
+                <span class="star" aria-label="3 stars">⭐⭐⭐</span>
+              </label>
+              <label class="rating-label">
+                <input type="radio" name="rating" value="2" required aria-required="true">
+                <span class="star" aria-label="2 stars">⭐⭐</span>
+              </label>
+              <label class="rating-label">
+                <input type="radio" name="rating" value="1" required aria-required="true">
+                <span class="star" aria-label="1 star">⭐</span>
+              </label>
+            </div>
+            <span id="rating-error" class="error-message" role="alert"></span>
+          </div>
 
-                    <div class="form-group">
-                                  name="review-text" 
-                                  rows="6" 
-                                  aria-describedby="review-error"
-                        <span class="char-count">
-                        </span>
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn-submit">Submit Review</button>
-                        <button type="reset" class="btn-reset">Clear Form</button>
+          
+          <div class="form-group">
+            <label for="review-text">Your Review <span class="required">*</span></label>
+            <textarea id="review-text" name="review-text" rows="6" required aria-required="true"
+                      aria-describedby="review-error" placeholder="Write your review here..."
+                      maxlength="1000"></textarea>
+            <span class="char-count"><span id="char-count">0</span>/1000 characters</span>
+            <span id="review-error" class="error-message" role="alert"></span>
+          </div>
 
-                </form>
-            </section>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">Submit Review</button>
+            <button type="reset" class="btn-reset">Clear Form</button>
+          </div>
+        </form>
+      </section>
 
-            <section class="reviews-display-section" aria-labelledby="reviews-heading">
-                <div id="reviews-container" class="reviews-container" role="list" aria-label="Movie reviews">
-                </div>
-                
-                    <p>No reviews yet. Be the first to write a review!</p>
-                </div>
-            </section>
+      
+      <section class="reviews-display-section" aria-labelledby="reviews-heading">
+        <h2 id="reviews-heading" class="section-title">Recent Reviews</h2>
+        <div id="reviews-container" class="reviews-container" role="list" aria-label="Movie reviews"></div>
+        
+        <div id="no-reviews" class="no-reviews" role="alert" aria-live="polite">
+          <p>No reviews yet. Be the first to write a review!</p>
         </div>
-    </main>
+      </section>
+    </div>
+  </main>
 
+  
+  <script src="review.js"></script>
 </body>
-
-
-
-
-
-</html>                <div id="no-reviews" class="no-reviews" role="alert" aria-live="polite">
-                <h2 id="reviews-heading" class="section-title">Recent Reviews</h2>
-                    </div>
-
-                        <span id="review-error" class="error-message" role="alert"></span>
-                            <span id="char-count">0</span>/1000 characters
-                                  maxlength="1000"></textarea>
-                                  placeholder="Write your review here..."
-                                  aria-required="true"
-                                  required
-                        <textarea id="review-text" 
-                        <label for="review-text">Your Review <span class="required">*</span></label>
-                    </div>
-                            <label class="rating-label">
-                        </div>
-
+</html>
