@@ -51,7 +51,7 @@ function showNotification(message) {
 
 function createCartItemCard(item) {
     const card = document.createElement('article');
-    card.className = 'info-card';
+    card.className = 'cart-item';
     card.setAttribute('role', 'listitem');
     card.setAttribute('data-movie-id', item.id);
     
@@ -72,13 +72,13 @@ function createCartItemCard(item) {
             <h3 class="cart-item-title">${item.title}</h3>
             <p class="cart-item-price">$${price.toFixed(2)}</p>
         </div>
-        <button class="btn-primary" 
+        <button class="btn-remove" 
                 data-movie-id="${item.id}" 
                 aria-label="Remove ${item.title} from cart">
             ✕ Remove
         </button>
     `;
-    const removeBtn = card.querySelector('.btn-primary');
+    const removeBtn = card.querySelector('.btn-remove');
     if (removeBtn) {
         removeBtn.addEventListener('click', () => {
             removeFromCart(item.id);
@@ -107,6 +107,7 @@ function displayCartItems() {
     cartItems.forEach(item => {
         const card = createCartItemCard(item);
         cartItemsContainer.appendChild(card);
+        cartItemsContainer.appendChild(document.createElement('br'));
     });
     updateCartTotals();
 }

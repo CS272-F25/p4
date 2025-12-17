@@ -61,12 +61,16 @@
     <div class="rent-card" style="margin-left: 100px; margin-right: 100px;">
       <h2 class="retro-title">Movies to Rent</h2>
       <div class="moviesToRent">
-        <p class="empty-cart">No movies in your rental cart. Go to the <a href="catalog.html">Catalog</a> to add some!
-        </p>
+        <div id="rent-movies" class="rent-movies-grid">
+          <!-- movie cart here -->
+        </div>
+        <div id="no-movies-message" class="no-movies-message" style="display: none;">
+            <p>No movies in your rental cart. Go to the <a href="catalog.html">Catalog</a> to add some!</p>
+        </div>
       </div>
     </div>
 
-    <div class="row g-3">
+    <div id="rental-form" class="row g-3">
 
       <div class="col-12 col-md-8">
         <div class="rent-card" style="margin-left: 100px;">
@@ -74,16 +78,19 @@
           <h3 class="rent-header">Personal Information</h3>
           <div class="info-card">
             <form class="personal-info">
-              <label for="username">Username </label><br>
-              <input type="text" id="username" name="username" placeholder="e.g. johnathandoe@gmail.com">
+              <label for="email">Email </label><br>
+              <input type="text" id="email" name="email" placeholder="e.g. johnathandoe@gmail.com">
+              <span id="email-error" class="error-message" role="alert"></span>
               <br>
               <br>
               <label for="password">Password </label><br>
               <input type="text" id="password" name="password" placeholder="e.g. 4321drowssap">
+              <span id="password-error" class="error-message" role="alert"></span>
               <br>
               <br>
               <label for="phoneNumber">Phone Number </label><br>
               <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g. 608-256-0056">
+              <span id="phoneNumber-error" class="error-message" role="alert"></span>
             </form>
           </div>
           <br>
@@ -92,21 +99,20 @@
             <form class="personal-info">
               <label for="date">Rental Start Date </label><br>
               <input type="text" id="date" name="date" placeholder="MM/DD/YYYY">
+              <span id="date-error" class="error-message" role="alert"></span>
               <br>
               <br>
               <label for="rentPeriod">Rent Period </label><br>
               <select id="rentPeriod" name="rentPeriod">
-                <option value="">-- Please select an option --</option>
-                <option value="1_day">1 Days: $1</option>
-                <option value="2_day">2 Days: $2</option>
-                <option value="4_day">4 Days: $4</option>
-                <option value="10_day">10 Days: $10</option>
+                <option value="1">1 Day: $1</option>
+                <option value="2">2 Days: $2</option>
+                <option value="4">4 Days: $4</option>
+                <option value="10">10 Days: $10</option>
               </select>
               <br>
               <br>
               <label for="paymentMethod">Payment Method </label><br>
               <select id="paymentMethod" name="paymentMethod">
-                <option value="">-- Please select an option --</option>
                 <option value="credit">Credit Card</option>
                 <option value="debit">Debit Card</option>
                 <option value="paypal">Paypal</option>
