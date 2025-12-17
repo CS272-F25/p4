@@ -342,10 +342,6 @@ function initRetroTV() {
     });
 }
 
-/**
- * Creates YouTube iframe dynamically (lazy loading)
- * @returns {HTMLElement} YouTube iframe element
- */
 function createYouTubeIframe() {
     const placeholder = document.getElementById('youtube-iframe-placeholder');
     if (!placeholder) return null;
@@ -364,10 +360,6 @@ function createYouTubeIframe() {
     return iframe;
 }
 
-/**
- * Loads a movie on the TV screen
- * @param {number} index - Index of movie in featuredMovies array
- */
 function loadMovieOnTV(index) {
     const movie = featuredMovies[index];
     const posterDisplay = document.getElementById('tv-poster-display');
@@ -429,9 +421,6 @@ function loadMovieOnTV(index) {
     });
 }
 
-/**
- * Stops TV playback
- */
 function stopTV() {
     const youtubeIframe = document.getElementById('youtube-iframe');
     const posterDisplay = document.getElementById('tv-poster-display');

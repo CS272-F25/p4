@@ -1,0 +1,29 @@
+.about-header,
+.mission-section,
+.story-section,
+.team-section,
+.values-section,
+.contact-section {
+  text-align: center;
+}
+
+.page-title,
+.page-subtitle,
+.section-title {
+  font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
+  letter-spacing: 2px;
+}
+
+.mission-text,
+.story-content p,
+.member-role,
+.member-bio,
+.value-card p,
+.contact-info {
+  text-align: center;
+}
+
+.team-grid,
+.values-grid {
+  justify-items: center;
+}
