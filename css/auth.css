@@ -1,285 +1,259 @@
-.nav-signin-btn{
-    background: rgba(0,255,255,0.1);
-    color: var(--sci-fi-cyan);
-    border: 1px solid var(--sci-fi-cyan);
-    padding: 0.5rem 1rem;
-    border-radius: 0;
-    font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 5px var(--sci-fi-cyan);
-}
-.nav-signin-btn:hover,
-.nav-signout-btn:hover{
-    background: rgba(0,255,255,0.2);
-    box-shadow: 0 0 15px rgba(0,255,255,0.4), inset 0 1px 0 rgba(0,255,255,0.2);
-    transform: translateY(-1px);
+.auth-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 10000;
 }
 
-.nav-signin-btn:focus,
-.nav-signout-btn:focus{
-    outline: 2px solid var(--sci-fi-purple);
-    outline-offset: 2px;
-}
-.user-greeting{
-    color: var(--sci-fi-cyan);
-    font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
-    
-    font-size: 0.9rem;
-    
-    padding: 0.5rem 1rem;
-    text-shadow: 0 0 10px var(--sci-fi-cyan);
-    letter-spacing: 1px;
+.auth-modal-overlay.show {
+  opacity: 1;
 }
 
-.auth-modal-overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(5px);
-    z-index: 10000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.auth-modal-overlay.show{
-    display: flex;
-    opacity: 1;
-}
-
-.auth-modal{
-    background:
-        repeating-linear-gradient(
-            90deg,
-            rgba(0,255,255,0.05) 0px,
-            rgba(0,255,255,0.05) 1px,
-            transparent 1px,
-            transparent 50px
-        ), 
-        repeating-linear-gradient(
-            0deg,
-            rgba(0,255,255,0.05) 0px,
-            rgba(0,255,255,0.05) 1px,
-            transparent 1px,
-            transparent 50px
-        ),
-        linear-gradient(
-            135deg,
-            rgba(0,102,255,0.2) 0%,
-            rgba(153,51,255,0.2) 50%,
-            rgba(0,255,255,0.2) 100%
-        ),
-        var(--sci-fi-cyan);
-    border: 3px solid var(--sci-fi-cyan);
-    border-top: 5px solid var(--sci-fi-purple);
-    box-shadow: 
-        0 20px 60px rgba(0,0,0,0.9),
-        0 0 50px rgba(0, 255, 255, 0.4),
-        0 0 100px rgba(153, 51, 255, 0.3)
-        inset 0 3px 15px rgba(0, 255, 255, 0.2);
-
-    padding: 3rem;
-    max-width: 450px;
-    width: 90%;
-    position: relative;
-    transform: scale(0.9);
-    transition: transform 0.5s ease;
-
+.auth-modal {
+  width: min(92vw, 480px);
+  background: var(--retro-gray);
+  border: 6px solid var(--retro-cyan);
+  border-top: 8px solid var(--retro-cyan);
+  border-radius: 16px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.85), 0 0 60px rgba(0, 255, 255, 0.25);
+  padding: 2.4rem 2.1rem 2rem;
+  position: relative;
+  transform: translateY(10px) scale(0.98);
+  transition: transform 0.25s ease;
 }
 
 .auth-modal-overlay.show .auth-modal {
-    transform: scale(1);
+  transform: translateY(0) scale(1);
 }
 
-.auth-modal-close{
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: 2px solid var(--sci-fi-cyan);
-    color: var(--sci-fi-cyan);
-    width: 35px;
-    height: 35px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
-    text-shadow: 0 0 10px var(--sci-fi-cyan);
+.auth-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 3px solid var(--retro-cyan);
+  color: var(--retro-cyan);
+  font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.65), 0 0 18px rgba(0, 255, 255, 0.14);
 }
 
 .auth-modal-close:hover,
-.auth-modal-close:focus{
-    background: rgba(0,255,255,0.1);
-    box-shadow: 0 0 20px rgba(0,255,255,0.6), inset 0 0 10px 0 rgba(0,255,255,0.2);
-    transform: rotate(90deg);
+.auth-modal-close:focus {
+  transform: translateY(-1px);
+  background: rgba(0, 255, 255, 0.08);
+  border-color: var(--retro-light-blue);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 255, 255, 0.22);
 }
 
-.auth-modal-close:focus{
-    outline: 2px solid var(--sci-fi-purple);
-    outline-offset: 2px;
+.auth-modal-close:focus {
+  outline: 2px solid var(--retro-light-blue);
+  outline-offset: 2px;
 }
 
-.auth-modal-header{
-    text-align: center;
-    margin-bottom: 2rem;
+.auth-modal-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
 }
 
-.auth-modal-title{
-    font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
-    font-size: 1.5rem;
-    color: var(--sci-fi-cyan);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    text-shadow: 
-        0 0 20px var(--sci-fi-cyan),
-        0 0 40px var(--sci-fi-cyan),
-        2px 2px 4px rgba(0,0,0,0.9);
-    font-weight: 900;
+.auth-modal-title {
+  font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
+  font-size: 1.55rem;
+  color: var(--retro-cyan);
+  margin: 0 0 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.65), 0 0 22px rgba(0, 255, 255, 0.3);
+  font-weight: 900;
 }
 
-.auth-form{
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+.auth-modal-subtitle {
+  margin: 0;
+  color: rgba(224, 231, 255, 0.85);
+  font-family: 'Roboto Condensed', 'Orbitron', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
 }
 
-.auth-form-group{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
 }
 
-.auth-form-label label{
-    color: var(--sci-fi-cyan);
-    font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px var(--sci-fi-cyan);
+.auth-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
-.auth-form-input input{
-    padding: 0.85rem;
-    background: rgba(0,0,0,0.4);
-    border: 2px solid var(--sci-fi-cyan);
-    color: var(--sci-fi-light);
-    font-family: 'Rajdhani', 'Roboto Condensed', sans-serif;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    border-radius: 0;
+.auth-form-group label {
+  color: var(--retro-light);
+  font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.12);
 }
 
-.auth-form-input input:focus{
-    outline: none;
-    border-color: var(--sci-fi-purple); 
-    background: rgba(0,0,0,0.5);
-    box-shadow: 0 0 20px rgba(0,255,255,0.6), inset 0 0 10px 0 rgba(0,0,0,0.5);
+.auth-form-group input {
+  padding: 0.95rem 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 3px solid rgba(0, 255, 255, 0.55);
+  border-radius: 10px;
+  color: var(--retro-light);
+  font-family: 'Roboto Condensed', 'Orbitron', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-.auth-form-group input::placeholder{
-    color: rgba(224, 231, 255, 0.4);
-    font-style: italic;
+.auth-form-group input:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0.45);
+  border-color: var(--retro-light-blue);
+  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.25);
 }
 
-.auth-error{
-    color: #ff3366;
-    font-size: 0.8rem;
-    margin-top: 0.2rem;
-    font-family: "Orbitron", "Roboto Condensed", sans-serif;
-    text-shadow: 0 0 10px #ff3366;
-    display: none;
+.auth-form-group input::placeholder {
+  color: rgba(224, 231, 255, 0.45);
 }
 
-.auth-error.show{
-    display: block;
+.auth-error {
+  display: none;
+  color: #ff3366;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Roboto Condensed', 'Orbitron', sans-serif;
+  text-shadow: 0 0 10px rgba(255, 51, 102, 0.35);
 }
 
-.auth-form-actions{
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
+.auth-error.show {
+  display: block;
 }
 
-.auth-btn{
-    padding: 0.9rem 1.5rem;
-    background: linear-gradient(135deg, rgba(0,255,255,0.2), rgba(153, 51, 255, 0.16));
-    color: var(--sci-fi-cyan);
-    border: 2px solid var(--sci-fi-cyan);
-    font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    text-shadow: 0 0 10px var(--sci-fi-cyan);
+.auth-form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+
+.auth-btn {
+  padding: 0.95rem 1.4rem;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--retro-cyan);
+  border: 3px solid var(--retro-cyan);
+  border-radius: 10px;
+  font-family: 'Orbitron', 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.65),
+    0 0 18px rgba(0, 255, 255, 0.18),
+    inset 0 2px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.25);
 }
 
 .auth-btn:hover,
-.auth-btn:focus{
-    background: linear-gradient(135deg, rgba(0,255,255,0.3), rgba(153, 51, 255, 0.2));
-    box-shadow: 0 6px 14px rgba(0,0,0,0.55), inset 0 0 18px 0 rgba(0,255,255,0.35);
-    transform: translateY(-1px);
-    border-color: var(--sci-fi-light);
-    color: var(--sci-fi-light);
+.auth-btn:focus {
+  transform: translateY(-2px);
+  background: rgba(0, 255, 255, 0.1);
+  border-color: var(--retro-light-blue);
+  color: var(--retro-light);
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.7),
+    0 0 26px rgba(0, 255, 255, 0.26),
+    inset 0 2px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3);
 }
 
-.auth-btn:focus{
-    outline: 2px solid var(--sci-fi-purple);
-    outline-offset: 2px;
+.auth-btn:focus {
+  outline: 2px solid var(--retro-light-blue);
+  outline-offset: 2px;
 }
 
-.auth-btn-secondary{
-    background: transparent;
-    color: var(--sci-fi-purple);
-    border: 2px solid var(--sci-fi-purple);
-    text-shadow: 0 0 10px var(--sci-fi-purple);
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+.auth-btn-secondary {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 255, 255, 0.55);
+  color: rgba(224, 231, 255, 0.9);
 }
 
 .auth-btn-secondary:hover,
-.auth-btn-secondary:focus{
-    background: rgba(153, 51, 255, 0.12);
-    color: var(--sci-fi-light);
-    border-color: var(--sci-fi-light);
-    box-shadow: 0 0 14px rgba(153, 51, 255, 0.3), inset 0 0 18px 0 rgba(153, 51, 255, 0.2);
-    transform: translateY(-1px);
+.auth-btn-secondary:focus {
+  background: rgba(0, 255, 255, 0.08);
+  border-color: var(--retro-light-blue);
 }
 
-.auth-links{
-    text-align: center;
-    margin-top: 1.25rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(0,255,255,0.2);
+.auth-links {
+  text-align: center;
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(0, 255, 255, 0.18);
 }
 
-.auth-links a{
-    color: var(--sci-fi-cyan);
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.2s ease, text-shadow 0.2s ease;
+.auth-links a {
+  color: var(--retro-light-blue);
+  font-family: 'Roboto Condensed', 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
-.auth-links a:hover{
-    color: var(--sci-fi-light);
-    text-shadow: 0 0 10px var(--sci-fi-cyan);
-    text-decoration: underline;
+.auth-links a:hover,
+.auth-links a:focus {
+  color: var(--retro-cyan);
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+  text-decoration: underline;
+}
+
+.notification {
+  position: fixed;
+  top: 86px;
+  right: 18px;
+  max-width: min(92vw, 420px);
+  padding: 0.95rem 1.1rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: 3px solid rgba(0, 255, 255, 0.6);
+  border-radius: 14px;
+  color: var(--retro-light);
+  font-family: 'Roboto Condensed', 'Orbitron', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75), 0 0 26px rgba(0, 255, 255, 0.16);
+  opacity: 0;
+  transform: translateX(18px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 11000;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 520px) {
+  .auth-modal {
+    padding: 2rem 1.5rem 1.7rem;
+  }
+
+  .auth-modal-title {
+    letter-spacing: 4px;
+  }
 }

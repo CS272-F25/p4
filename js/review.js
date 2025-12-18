@@ -7,7 +7,7 @@ function saveReviews(reviews) {
   localStorage.setItem('movieReviews', JSON.stringify(reviews));
 }
 
-async function fetchPosterUrl(title) {
+function fetchPosterUrl(title) {
   const cleanedTitle = (title || 'movie').trim();
   if (!cleanedTitle) {
     return 'https://via.placeholder.com/300x450/0a0a0f/00ffff?text=Movie+Poster';
@@ -16,13 +16,10 @@ async function fetchPosterUrl(title) {
   return `https://source.unsplash.com/400x600/?movie,${query}`;
 }
 
-async function addReview(reviewData) {
+function addReview(reviewData) {
   const reviews = getReviews();
-  const posterUrl = await fetchPosterUrl(reviewData['movie-title']);
-  const newReview = Object.assign(
-    { id: Date.now(), date: new Date().toISOString(), posterUrl },
-    reviewData
-  );
+  const posterUrl = fetchPosterUrl(reviewData['movie-title']);
+  const newReview = { id: Date.now(), date: new Date().toISOString(), posterUrl, ...reviewData };
 
   reviews.unshift(newReview);
   saveReviews(reviews);
@@ -30,7 +27,7 @@ async function addReview(reviewData) {
 }
 
 function createStarRating(rating) {
-  const fullStars = '⭐'.repeat(rating);
+  const fullStars = '★'.repeat(rating);
   const emptyStars = '☆'.repeat(5 - rating);
   return fullStars + emptyStars;
 }
@@ -60,7 +57,7 @@ function createReviewCard(review) {
     <div class="review-content">
       <div class="review-card-header">
         <div class="review-meta">
-          <h3 class="review-movie-title">${review['movie-title']}</h3>
+          <h3 class="review-movie-title">${escapeHtml(review['movie-title'] || '')}</h3>
           ${review['reviewer-name'] ? `<p class="review-reviewer">By ${escapeHtml(review['reviewer-name'])}</p>` : ''}
         </div>
         <div class="review-rating">
@@ -102,14 +99,7 @@ function displayReviews() {
     reviewsContainer.style.display = 'block';
     noReviewsDiv.style.display = 'none';
 
-    const sortedReviews = [...reviews].sort(
-      (a, b) => new Date(b.date) - new Date(a.date)
-    );
-
-    sortedReviews.forEach(review => {
-      const card = createReviewCard(review);
-      reviewsContainer.appendChild(card);
-    });
+    reviews.forEach(review => reviewsContainer.appendChild(createReviewCard(review)));
   }
 }
 
@@ -123,15 +113,15 @@ function updateCharCount() {
       charCount.textContent = length;
 
       if (length > 900) {
-        charCount.parentElement.style.color = 'var(--retro-orange)';
+        charCount.parentElement.style.color = 'var(--retro-light-blue)';
       } else {
-        charCount.parentElement.style.color = '#999';
+        charCount.parentElement.style.color = '';
       }
     });
   }
 }
 
-async function handleFormSubmit(e) {
+function handleFormSubmit(e) {
   e.preventDefault();
 
   const form = document.getElementById('review-form');
@@ -139,7 +129,7 @@ async function handleFormSubmit(e) {
   const formData = new FormData(form);
   const reviewData = Object.fromEntries(formData);
 
-  await addReview(reviewData);
+  addReview(reviewData);
 
   form.reset();
   document.getElementById('char-count').textContent = '0';
@@ -154,7 +144,7 @@ function initFormListeners() {
   updateCharCount();
 
   const ratingInputs = document.getElementsByName('rating');
-  ratingInputs.forEach(input => {
+  Array.from(ratingInputs).forEach(input => {
     input.addEventListener('change', () => {
       const errorElement = document.getElementById('rating-error');
       if (errorElement) errorElement.textContent = '';
@@ -163,7 +153,6 @@ function initFormListeners() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  updateCartCount();
   initFormListeners();
   displayReviews();
 });

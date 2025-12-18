@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta description="CINE-REWIND Movie Rental Website" />
-  <title>CINEREWIND</title>
+  <meta name="description" content="CINE-REWIND Movie Rental Website" />
+  <title>Home Page</title>
 
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -34,22 +34,21 @@
         <li><a href="review.html">Reviews</a></li>
         <li><a href="aboutUs.html">About Us</a></li>
         <li>
-          <button id="signin-btn" class="nav-btn">Sign In</button>
+          <button id="signin-btn" class="nav-btn" type="button">Sign In</button>
           <span id="user-greeting" class="nav-greeting"></span>
-          <button id="signout-btn" class="nav-btn">Sign Out</button>
+          <button id="signout-btn" class="nav-btn" type="button">Sign Out</button>
+        </li>
+        <li>
+          <a href="cart.html" class="cart-icon-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+            </svg>
+            <span class="cart-badge" id="cart-count">0</span>
+          </a>
         </li>
       </ul>
-
-      <div class="nav-header-actions">
-        <a href="cart.html" class="cart-icon-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart"
-            viewBox="0 0 16 16">
-            <path
-              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-          </svg>
-          <span class="cart-badge" id="cart-count">0</span>
-        </a>
-      </div>
     </div>
   </nav>
 
@@ -121,8 +120,8 @@
 
 
     <section class="hero">
-      <h2 id="hero-heading" class="retro-title">WELCOME TO CINE-REWIND</h2>
-      <p class="hero subtitle">YOUR RETRO MOVIE EXPERIENCE AWAITS</p>
+      <h2 class="retro-title">WELCOME TO CINE-REWIND</h2>
+      <p class="subtitle">YOUR RETRO MOVIE EXPERIENCE AWAITS</p>
       <p class="hero-description">
         Step back in time with Cine-Rewind, your ultimate destination for
         classic movie rentals. Whether you're a fan of timeless
@@ -136,14 +135,14 @@
     </section>
 
     <section class="featured-section">
-      <h2 class="home-genres-heading" class="section-title">
+      <h2 class="home-genres-heading">
         BROWSE BY GENRE
       </h2>
       <div class="section-intro">
         <p>Select a shelf that fits your mood and start exploring.</p>
       </div>
 
-      <div id="genre-grid" class="info-grid genre-grid">
+      <div class="info-grid genre-grid">
 
         <article class="genre-card" data-genre="action">
           <header class="genre-header">
@@ -209,7 +208,7 @@
 
 
     <section class="featured-section">
-      <h2 class="home-genres-heading" class="section-title">
+      <h2 class="home-genres-heading">
         WHY CHOOSE CINE-REWIND?
       </h2>
       <div class="section-intro">
@@ -218,7 +217,7 @@
           cinephiles love us:
         </p>
       </div>
-      <div id="info-grid" class="info-grid">
+      <div class="info-grid">
         <article class="info-card">
           <header class="info-header">
             <h3>Extensive Catalog</h3>
@@ -253,13 +252,13 @@
 
 
     <section class="featured-section">
-      <h2 class="home-genres-heading" class="section-title">
+      <h2 class="home-genres-heading">
         STORE INFORMATION
       </h2>
       <div class="section-intro">
         <p>Need help? Want to know more about us? Reach out!</p>
       </div>
-      <div id="info-grid" class="info-grid">
+      <div class="info-grid">
         <article class="info-card">
           <header class="info-header">
             <h3>Contact Us</h3>
@@ -289,11 +288,11 @@
           <p class="info-copy">
             Stay updated with our latest releases and promotions:<br />
             Facebook:
-            <a href="https://www.facebook.com/CineRewind" target="_blank">CineRewind</a><br />
+            <a href="https://www.facebook.com/CineRewind" target="_blank" rel="noopener noreferrer">CineRewind</a><br />
             Twitter:
-            <a href="https://twitter.com/CineRewind" target="_blank">@CineRewind</a><br />
+            <a href="https://twitter.com/CineRewind" target="_blank" rel="noopener noreferrer">@CineRewind</a><br />
             Instagram:
-            <a href="https://www.instagram.com/CineRewind" target="_blank">@CineRewind</a>
+            <a href="https://www.instagram.com/CineRewind" target="_blank" rel="noopener noreferrer">@CineRewind</a>
           </p>
         </article>
       </div>

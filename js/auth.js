@@ -1,5 +1,40 @@
-
 let currentUser = null;
+
+function updateCartCount() {
+    const cartItems = JSON.parse(sessionStorage.getItem('cart') || '[]');
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = cartItems.length;
+    }
+}
+
+function addMovieToCart({ id, title, poster_path }) {
+    const cart = JSON.parse(sessionStorage.getItem('cart') || '[]');
+    if (cart.some(item => item.id === id)) {
+        showNotification(`${title} is already in your cart.`);
+        return false;
+    }
+
+    cart.push({ id, title, poster_path: poster_path || null });
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    showNotification(`${title} added to cart!`);
+    return true;
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    notification.setAttribute('role', 'alert');
+    notification.setAttribute('aria-live', 'polite');
+
+    document.body.appendChild(notification);
+
+    requestAnimationFrame(() => notification.classList.add('show'));
+    setTimeout(() => notification.classList.remove('show'), 3000);
+    setTimeout(() => notification.remove(), 3300);
+}
 
 function getCurrentUser() {
     const userStr = localStorage.getItem('currentUser');
@@ -14,6 +49,12 @@ function saveUser(user) {
 function removeUser() {
     localStorage.removeItem('currentUser');
     currentUser = null;
+}
+
+function completeAuth(userSession, message) {
+    saveUser(userSession);
+    updateAuthUI();
+    showNotification(message);
 }
 
 function updateAuthUI() {
@@ -119,9 +160,7 @@ function signIn(email, password) {
             username: user.username || user.email.split('@')[0],
             signInTime: new Date().toISOString()
         };
-        saveUser(userSession);
-        updateAuthUI();
-        showNotification('Welcome back! Sign in successful.');
+        completeAuth(userSession, 'Welcome back! Sign in successful.');
         return true;
     } else {
         showError('email', 'Invalid email/username or password');
@@ -154,9 +193,7 @@ function register(email, password, username = null) {
         username: newUser.username,
         signInTime: new Date().toISOString()
     };
-    saveUser(userSession);
-    updateAuthUI();
-    showNotification('Account created! Welcome to CineRewind!');
+    completeAuth(userSession, 'Account created! Welcome to CineRewind!');
     return true;
 }
 
@@ -166,8 +203,6 @@ function signOut() {
     showNotification('You have been signed out. Thank you for visiting!');
 }
 
-    
-    
 function handleAuthSubmit(e) {
     e.preventDefault();
     
@@ -219,19 +254,16 @@ function toggleAuthMode() {
 function initAuth() {
     currentUser = getCurrentUser();
     updateAuthUI();
+    updateCartCount();
     
     const signinBtn = document.getElementById('signin-btn');
     if (signinBtn) {
-        signinBtn.addEventListener('click', () => {
-            showAuthModal();
-        });
+        signinBtn.addEventListener('click', showAuthModal);
     }
     
     const signoutBtn = document.getElementById('signout-btn');
     if (signoutBtn) {
-        signoutBtn.addEventListener('click', () => {
-            signOut();
-        });
+        signoutBtn.addEventListener('click', signOut);
     }
     
     const closeBtn = document.getElementById('auth-modal-close');

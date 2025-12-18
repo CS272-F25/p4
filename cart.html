@@ -4,14 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta description="CINE-REWIND Movie Rental Website" />
+  <meta name="description" content="CINE-REWIND Movie Rental Website" />
   <title>Cart</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link href="css/global.css" rel="stylesheet" />
   <link href="css/rent.css" rel="stylesheet" />
+  <link href="css/auth.css" rel="stylesheet" />
   <script src="js/cart.js" defer></script>
+  <script src="js/auth.js" defer></script>
 </head>
 
 <body>
@@ -31,22 +33,22 @@
         <li><a href="review.html">Reviews</a></li>
         <li><a href="aboutUs.html">About Us</a></li>
         <li>
-          <button id="signin-btn" class="nav-btn">Sign In</button>
+          <button id="signin-btn" class="nav-btn" type="button">Sign In</button>
           <span id="user-greeting" class="nav-greeting"></span>
-          <button id="signout-btn" class="nav-btn">Sign Out</button>
+          <button id="signout-btn" class="nav-btn" type="button">Sign Out</button>
+        </li>
+        <li>
+          <a href="cart.html" class="cart-icon-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+            </svg>
+            <span class="cart-badge" id="cart-count">0</span>
+          </a>
         </li>
       </ul>
 
-      <div class="nav-header-actions">
-        <a href="cart.html" class="cart-icon-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart"
-            viewBox="0 0 16 16">
-            <path
-              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-          </svg>
-          <span class="cart-badge" id="cart-count">0</span>
-        </a>
-      </div>
     </div>
   </nav>
 
@@ -60,7 +62,7 @@
     <div class="row g-3">
 
       <div class="col-12 col-md-8">
-        <div class="rent-card" style="margin-left: 100px;">
+	        <div class="rent-card rent-card--offset-left">
           <section class="cart-items-section" aria-labelledby="cart-items-heading">
             <h2 id="cart-items-heading" class="visually-hidden">Cart Items</h2>
             <div id="cart-items" class="cart-items" role="list" aria-label="Items in shopping cart">
@@ -73,17 +75,18 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-4">
-        <div class="rent-card" style="margin-right: 100px;">
-          <div class="cart-summary">
-            <h2 class="retro-title">Order Summary</h2>
-            <h3 class="rent-header">Total: <span id="cartTotal">0.00</span></h3>
-            <a href="rent.html" id="checkout-btn" class="btn btn-primary">Proceed to Checkout</a>
-          </div>
-        </div>
-      </div>
-  </main>
+	      <div class="col-12 col-md-4">
+	        <div class="rent-card rent-card--offset-right">
+	          <div class="cart-summary">
+	            <h2 class="retro-title">Order Summary</h2>
+	            <h3 class="rent-header">Total: <span id="cartTotal">0.00</span></h3>
+	            <a href="rent.html" id="checkout-btn" class="btn btn-primary">Proceed to Checkout</a>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </main>
 
-</body>
+	</body>
 
 </html>
