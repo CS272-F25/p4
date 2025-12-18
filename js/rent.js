@@ -1,15 +1,6 @@
-// removes all items from the cart
-function removeFromCart() {
-
-}
-
 function getCartItems() {
     const cart = sessionStorage.getItem('cart');
     return cart ? JSON.parse(cart) : [];
-}
-
-function createCartItemCard(item) { 
-
 }
 
 function displayRentMovies() {
@@ -150,7 +141,7 @@ function validateField(field) {
     }
     
     // Date validation 
-    if (fieldName === 'date' && value) {
+    if (fieldName === 'dateRented' && value) {
         const dateRegex = /(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/;
         if (!dateRegex.test(value)) {
             isValid = false;
@@ -182,6 +173,8 @@ function handleFormSubmit(e) {
     const form = e.target;
     const fields = form.querySelectorAll('input[required], select[required], textarea[required]');
     
+    // console.log(fields);
+
     let isFormValid = true;
     
     // Validate all required fields
@@ -210,7 +203,7 @@ function handleFormSubmit(e) {
         
         // Add movies and total to rental data
         rentalData.movies = cartItems;
-        rentalData.total = cartItems.reduce((sum, item) => sum + (item.price || 4.99), 0) * 1.08; // Include tax
+        rentalData.total = cartItems.reduce((sum, item) => sum + (1), 0);
         
         // Add to rental history
         addToRentalHistory(rentalData);
@@ -243,8 +236,106 @@ function handleFormSubmit(e) {
     }
 }
 
+function getRentalHistory() {
+    const history = localStorage.getItem('rentalHistory');
+    return history ? JSON.parse(history) : [];
+}
+
+function saveRentalHistory(history) {
+    localStorage.setItem('rentalHistory', JSON.stringify(history));
+}
+
+function addToRentalHistory(rentalData) {
+    const history = getRentalHistory();
+    const newRental = {
+        id: Date.now(),
+        ...rentalData,
+        date: new Date().toISOString()
+    };
+    history.unshift(newRental); // Add to beginning
+    saveRentalHistory(history);
+    displayRentalHistory();
+}
+
+function displayRentalHistory() {
+    const history = getRentalHistory();
+    const historyContainer = document.getElementById('rental-history');
+    
+    if (!historyContainer) return;
+    
+    if (history.length === 0) {
+        historyContainer.innerHTML = '<p class="empty-history">No rental history yet. Complete a rental to see it here!</p>';
+        return;
+    }
+    
+    historyContainer.innerHTML = '';
+    
+    history.slice(0, 5).forEach(rental => {
+        const receiptCard = document.createElement('article');
+        receiptCard.className = 'rental-receipt';
+        receiptCard.setAttribute('role', 'listitem');
+        
+        // Get movies for this rental
+        const movies = rental.movies || [];
+        
+        let moviesHTML = '';
+        if (movies.length > 0) {
+            moviesHTML = '<div class="receipt-movies">';
+            movies.forEach(movie => {
+                const posterUrl = movie.poster_path 
+                    ? `${TMDB_IMAGE_BASE_URL}${movie.poster_path}`
+                    : 'https://via.placeholder.com/80x120/333333/ffffff?text=No+Image';
+                
+                moviesHTML += `
+                    <div class="receipt-movie-item">
+                        <picture class="receipt-movie-poster">
+                            <img src="${posterUrl}" 
+                                 alt="${movie.title} poster" 
+                                 loading="lazy"
+                                 onerror="this.src='https://via.placeholder.com/80x120/333333/ffffff?text=No+Image'">
+                        </picture>
+                        <div class="receipt-movie-details">
+                            <p class="receipt-movie-title">${movie.title}</p>
+                            <p class="receipt-movie-price">$${(1).toFixed(2)}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            moviesHTML += '</div>';
+        }
+        
+        const total = movies.reduce((sum, m) => sum + (1), 0);
+        // console.log(rental);
+        
+        receiptCard.innerHTML = `
+            <div class="receipt-header">
+                <div class="receipt-title-section">
+                    <h3>RENTAL RECEIPT</h3>
+                </div>
+            </div>
+            <div class="receipt-divider"></div>
+            ${moviesHTML}
+            <div class="receipt-customer-info">
+                <p><strong>Email:</strong> ${rental.email}</p>
+                ${rental.phoneNumber ? `<p><strong>Phone:</strong> ${rental.phoneNumber}</p>` : ''}
+                <p><strong>Rental Period:</strong> ${rental['rentPeriod']} Days</p>
+                <p><strong>Start Date:</strong> ${rental.dateRented}</p>
+                <p><strong>Payment Method:</strong> ${rental['paymentMethod']}</p>
+            </div>
+            <div class="receipt-divider"></div>
+            <div class="receipt-total">
+                <p class="receipt-total-label">TOTAL</p>
+                <p class="receipt-total-amount">$${total.toFixed(2)}</p>
+            </div>
+        `;
+        
+        historyContainer.appendChild(receiptCard);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
     initFormListeners();
     displayRentMovies();
+    displayRentalHistory();
 });

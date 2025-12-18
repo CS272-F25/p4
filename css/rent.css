@@ -184,3 +184,65 @@ input, select {
   font-weight: bold;
   margin-top: 0.5rem;
 }
+
+.rental-receipt {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--retro-blue);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+}
+
+.receipt-title-section h3 {
+  font-family: 'Audiowide', cursive;
+  color: var(--retro-yellow);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+}
+
+.receipt-number {
+  color: var(--retro-accent);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.receipt-date-section {
+  text-align: right;
+}
+
+.receipt-date {
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.receipt-divider {
+  border-top: 2px dashed rgba(255, 255, 255, 0.3);
+  margin: 1rem 0;
+}
+
+.receipt-movies {
+  margin: 1.5rem 0;
+}
+
+.receipt-movie-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  align-items: center;
+}
+
+.receipt-movie-poster {
+  flex-shrink: 0;
+  width: 80px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #1a1a1a;
+}

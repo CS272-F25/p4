@@ -70,76 +70,78 @@
       </div>
     </div>
 
-    <div id="rental-form" class="row g-3">
+    <form id="rental-form">
+      <div class="row g-3">
 
-      <div class="col-12 col-md-8">
-        <div class="rent-card" style="margin-left: 100px;">
-          <h2 class="retro-title">Rental Information</h2>
-          <h3 class="rent-header">Personal Information</h3>
-          <div class="info-card">
-            <form class="personal-info">
-              <label for="email">Email </label><br>
-              <input type="text" id="email" name="email" placeholder="e.g. johnathandoe@gmail.com">
-              <span id="email-error" class="error-message" role="alert"></span>
-              <br>
-              <br>
-              <label for="password">Password </label><br>
-              <input type="text" id="password" name="password" placeholder="e.g. 4321drowssap">
-              <span id="password-error" class="error-message" role="alert"></span>
-              <br>
-              <br>
-              <label for="phoneNumber">Phone Number </label><br>
-              <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g. 608-256-0056">
-              <span id="phoneNumber-error" class="error-message" role="alert"></span>
-            </form>
-          </div>
-          <br>
-          <h3 class="rent-header">Rental Details</h3>
-          <div class="info-card">
-            <form class="personal-info">
-              <label for="date">Rental Start Date </label><br>
-              <input type="text" id="date" name="date" placeholder="MM/DD/YYYY">
-              <span id="date-error" class="error-message" role="alert"></span>
-              <br>
-              <br>
-              <label for="rentPeriod">Rent Period </label><br>
-              <select id="rentPeriod" name="rentPeriod">
-                <option value="1">1 Day: $1</option>
-                <option value="2">2 Days: $2</option>
-                <option value="4">4 Days: $4</option>
-                <option value="10">10 Days: $10</option>
-              </select>
-              <br>
-              <br>
-              <label for="paymentMethod">Payment Method </label><br>
-              <select id="paymentMethod" name="paymentMethod">
-                <option value="credit">Credit Card</option>
-                <option value="debit">Debit Card</option>
-                <option value="paypal">Paypal</option>
-                <option value="cash">Cash</option>
-              </select>
-            </form>
-          </div>
-          <br>
-          <br>
-          <section class="hero">
-            <div class="form-actions">
-              <button type="submit" class="btn-primary" id="complete-rent">Complete Rental</button>
+        <div class="col-12 col-md-8">
+          <div class="rent-card" style="margin-left: 100px;">
+            <h2 class="retro-title">Rental Information</h2>
+            <h3 class="rent-header">Personal Information</h3>
+            <div class="info-card">
+              <form class="personal-info">
+                <label for="email">Email </label><br>
+                <input type="text" id="email" name="email" placeholder="e.g. johnathandoe@gmail.com" required>
+                <span id="email-error" class="error-message" role="alert"></span>
+                <br>
+                <br>
+                <label for="password">Password </label><br>
+                <input type="text" id="password" name="password" placeholder="e.g. 4321drowssap" required>
+                <span id="password-error" class="error-message" role="alert"></span>
+                <br>
+                <br>
+                <label for="phoneNumber">Phone Number </label><br>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g. 608-256-0056" required>
+                <span id="phoneNumber-error" class="error-message" role="alert"></span>
+              </form>
             </div>
-          </section>
+            <br>
+            <h3 class="rent-header">Rental Details</h3>
+            <div class="info-card">
+              <form class="personal-info">
+                <label for="dateRented">Rental Start Date </label><br>
+                <input type="text" id="dateRented" name="dateRented" placeholder="MM/DD/YYYY" required>
+                <span id="dateRented-error" class="error-message" role="alert"></span>
+                <br>
+                <br>
+                <label for="rentPeriod">Rent Period </label><br>
+                <select id="rentPeriod" name="rentPeriod" required>
+                  <option value="1">1 Day: $1</option>
+                  <option value="2">2 Days: $2</option>
+                  <option value="4">4 Days: $4</option>
+                  <option value="10">10 Days: $10</option>
+                </select>
+                <br>
+                <br>
+                <label for="paymentMethod">Payment Method </label><br>
+                <select id="paymentMethod" name="paymentMethod" required>
+                  <option value="credit">Credit Card</option>
+                  <option value="debit">Debit Card</option>
+                  <option value="paypal">Paypal</option>
+                  <option value="cash">Cash</option>
+                </select>
+              </form>
+            </div>
+            <br>
+            <br>
+            <section class="hero">
+              <div class="form-actions">
+                <button type="submit" class="btn-primary" id="complete-rent">Complete Rental</button>
+              </div>
+            </section>
 
+          </div>
         </div>
-      </div>
 
-      <div class="col-12 col-md-4">
-        <div class="rent-card" style="margin-right: 100px;">
-          <h2 class="retro-title">Purchase History</h2>
-          <div id="rental-history" class="rental-history">
-            <p class="empty-history">No rental history yet. Complete a rental to see it here!</p>
+        <div class="col-12 col-md-4">
+          <div class="rent-card" style="margin-right: 100px;">
+            <h2 class="retro-title">Purchase History</h2>
+            <div id="rental-history" class="rental-history">
+              <p class="empty-history">No rental history yet. Complete a rental to see it here!</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
     <br>
     <br>
   </main>
